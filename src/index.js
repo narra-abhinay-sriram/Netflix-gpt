@@ -1,3 +1,5 @@
+//https://netflixgpt-9d535.web.app
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';

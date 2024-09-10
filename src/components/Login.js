@@ -1,6 +1,10 @@
 import { useState,useRef } from "react"
 import Header from "./Header"
 import Formvalidate from "./Formvalidate"
+import {  createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../utils/firebase";
+import {  signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
 
@@ -9,6 +13,7 @@ const email=useRef()
 const password=useRef()
 
 const [error,seterror]=useState(null)
+const navigate=useNavigate()
 
 
 const handleclick=()=>{
@@ -17,6 +22,50 @@ const handleclick=()=>{
 const handlerror=()=>{
 const messege=  Formvalidate(email.current.value,password.current.value)
  messege?seterror(messege):seterror(null)
+
+ if(!isSignin){
+   
+    createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+      .then((userCredential) => {
+        // Signed up 
+        const user = userCredential.user;
+        navigate("/browse")
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+       // console.log(errorCode)
+        // ..
+        seterror(errorCode)
+      });
+    
+
+ }else{
+
+    signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    navigate("/browse")
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorMessage)
+    seterror(errorCode)
+  });
+
+
+ }
+
+}
+
+if(error === "auth/email-already-in-use")
+
+{
+    seterror("User-already-exists")
 
 }
 
@@ -37,26 +86,30 @@ const messege=  Formvalidate(email.current.value,password.current.value)
          </h1>
         {!isSignin && <input 
         type="text" 
-        placeholder="Mobile number" 
+        placeholder="Name" 
         className="p-3 px-16 mb-2 m-2 ml-14 bg-gray-900 rounded-lg border border-white "/>
         }
         <input
         ref={email}
          type="text" 
          placeholder="Email Address" 
-         className="p-3 px-16  m-2 ml-14 mb-2 bg-gray-900 rounded-lg border border-white opacity-70"
+         className="p-3 px-16  m-2 ml-14 mb-2 bg-gray-900 rounded-lg border border-white opacity-70 hover:border-l-4"
          />
         <input 
         ref={password}
         type="text" 
         placeholder="Password" 
-        className="py-3 m-2  px-16 ml-14 mb-2 bg-gray-900 rounded-lg border border-white opacity-70" 
+        className="py-3 m-2  px-16 ml-14 mb-2 bg-gray-900 rounded-lg border border-white opacity-70 hover:border-l-4" 
         />
-                <p className="text-center text-red-600">{error}</p>
+        <p 
+        className="text-center text-red-600">
+       {error
+       }
+       </p>
 
         <button 
         onClick={handlerror}
-        className="p-2 m-2  px-[133px] ml-14 bg-red-600 text-center rounded-lg">
+        className="p-2 m-2  px-[133px] ml-14 bg-red-600 text-center rounded-lg hover:bg-red-950">
             {isSignin?"SignIn":"SignUp"}
         </button>
         <p 
@@ -64,7 +117,7 @@ const messege=  Formvalidate(email.current.value,password.current.value)
             OR</p>
 
         <p 
-        className="mb-8 p-2 m-2   ml-14 cursor-pointer" 
+        className="mb-8 p-2 m-2   ml-14 cursor-pointer hover:text-lg" 
         onClick={handleclick}>{isSignin?"New to Netflix? Sign Up Now":"Already a User? Sign In Now"}
         </p>
       </form>
