@@ -4,7 +4,7 @@ import Formvalidate from "./Formvalidate"
 import {  createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import {  signInWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { login_bg } from "../utils/constants";
 
 const Login = () => {
 
@@ -13,7 +13,6 @@ const email=useRef()
 const password=useRef()
 
 const [error,seterror]=useState(null)
-const navigate=useNavigate()
 
 
 const handleclick=()=>{
@@ -28,13 +27,12 @@ const messege=  Formvalidate(email.current.value,password.current.value)
     createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
       .then((userCredential) => {
         // Signed up 
-        const user = userCredential.user;
-        navigate("/browse")
+       // const user = userCredential.user;
         // ...
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
+     //   const errorMessage = error.message;
        // console.log(errorCode)
         // ..
         seterror(errorCode)
@@ -46,8 +44,7 @@ const messege=  Formvalidate(email.current.value,password.current.value)
     signInWithEmailAndPassword(auth, email.current.value, password.current.value)
   .then((userCredential) => {
     // Signed in 
-    const user = userCredential.user;
-    navigate("/browse")
+   // const user = userCredential.user;
     // ...
   })
   .catch((error) => {
@@ -70,13 +67,12 @@ if(error === "auth/email-already-in-use")
 }
 
   return (
- <div>
+ <div className="">
  <Header/>
  <div className="">
  <img 
- className="absolute"
-  src="https://assets.nflxext.com/ffe/siteui/vlv3/04bef84d-51f6-401e-9b8e-4a521cbce3c5/null/IN-en-20240903-TRIFECTA-perspective_0d3aac9c-578f-4e3c-8aa8-bbf4a392269b_large.jpg
-"alt="bg-logo" />
+ className="absolute bg-gradient-to-r from-black"
+  src={login_bg} alt="bg-logo" />
  </div>
       <form onSubmit={(e)=>{e.preventDefault()}}
       className="absolute w-4/12 bg-black  m-auto right-0 left-0 mt-28 text-white opacity-85 py-16 rounded-lg">
