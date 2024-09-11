@@ -1,4 +1,5 @@
 import Header from "./Header"
+import Maincontainer from "./Maincontainer"
 import useNowPlayingMovies from "./useNowPlayingMovies"
 
 const Browse = () => {
@@ -11,7 +12,7 @@ const Browse = () => {
       <div>
        <Header/>
        </div>
-      
+      <Maincontainer/>
       </div>
   )
 }
