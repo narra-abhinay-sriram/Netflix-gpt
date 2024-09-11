@@ -7,7 +7,7 @@ const Maincontainer = () => {
     if(!movies) return
     const num=Math.floor((Math.random()*10))
     
-    const mainmovie=movies[num +7]
+    const mainmovie=movies[num]
    // console.log(mainmovie.id)
    // console.log(mainmovie)
   return (
