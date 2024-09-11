@@ -3,13 +3,19 @@ import Maincontainer from "./Maincontainer"
 import Secondarycontainer from "./Secondarycontainer"
 import useNowPlayingMovies from "./useNowPlayingMovies"
 import usePopular from "./usePopular"
+import usePopularseries from "./usePopularseries"
 import useTopRated from "./useTopRated"
+import useTopseries from "./useTopseries"
+import useUpComing from "./useUpComing"
 
 const Browse = () => {
  
  useNowPlayingMovies()
  usePopular()
  useTopRated()
+ useUpComing()
+ useTopseries()
+ usePopularseries()
  
   
   return (
