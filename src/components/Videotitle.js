@@ -6,7 +6,7 @@ const Videotitle = ({title,overview}) => {
     setover(!overviews)
   }
   return (
-    <div className="w-screen aspect-video  pt-80 px-16 absolute text-white bg-gradient-to-r from-black h-[620px] ">
+    <div className="w-screen aspect-video  pt-60 px-16 absolute text-white bg-gradient-to-r from-black ">
       <h1 className="font-bold text-6xl text-balance">{title}</h1>
      {overviews && <p className="w-3/5 mt-2">{overview}</p>}
       <div className="flex mt-2 ">

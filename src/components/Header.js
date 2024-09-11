@@ -49,12 +49,12 @@ signOut(auth).then(() => {
 }
 
   return (
-<div className="flex justify-between items-center w-screen py-3 bg-gradient-to-b from-black absolute z-10">
-<div className="px-6 ">
-      <img className="w-44 " src={header_icon} alt="logo" />
+<div className="flex justify-between items-center w-screen py-1 bg-gradient-to-b from-black absolute z-10">
+<div className="px-1 ">
+      <img className="w-40 " src={header_icon} alt="logo" />
     </div>
     {user&&
-       <div className="flex items-center space-x-4 mr-4">
+       <div className="flex items-center space-x-2 mr-4">
         <img  className="w-9"
         src={sign_out_icon}
        alt="usericon" />
