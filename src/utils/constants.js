@@ -8,3 +8,10 @@ export const Api_opt= {
       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZWVhMThhZjdlOGRhM2ZlOTExODE0MDczZWU2NGVjMyIsIm5iZiI6MTcyNjAzMTg2NS40MjIwMDksInN1YiI6IjY2ZTEyNmNiZDk2NzhhZGRiZDU0ZTM4ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xw_WFgSFhf7Eb48BSbvNFPFQrtiQIDhhSDJOqlj1K_c'
     }
   };
+
+  export const lang=[
+    {identifier:"en",name:"English"},
+    {identifier:"hin",name:"Hindi"},
+    {identifier:"Tel",name:"Telugu"},
+
+  ]

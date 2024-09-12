@@ -8,7 +8,11 @@ import { header_icon } from "../utils/constants";
 import { useSelector } from "react-redux"
 import {  signOut } from "firebase/auth";
 import { sign_out_icon } from "../utils/constants";
+import { changeGptstate } from "../utils/gptslice";
+import { lang } from "../utils/constants";
 const Header = () => {
+  const gptstate=useSelector((store)=>store.gpt.gptstate)
+
   const dispatch=useDispatch()
   const navigate=useNavigate()
   
@@ -47,14 +51,33 @@ signOut(auth).then(() => {
 
 
 }
+const handleGpt=()=>{
+  dispatch (changeGptstate())
+}
 
   return (
 <div className="flex justify-between items-center w-screen py-1 bg-gradient-to-b from-black absolute z-10">
 <div className="px-1 ">
       <img className="w-40 " src={header_icon} alt="logo" />
     </div>
-    {user&&
-       <div className="flex items-center space-x-2 mr-4">
+    
+    {user&& 
+      <div className="flex items-center space-x-2 mr-4">
+       {!gptstate&& 
+<select className="px-4 py-2 rounded-md bg-gray-900 text-white">
+      {lang.map
+      ((lang)=>
+        (<option 
+      key={lang.identifier} 
+      value={lang.identifier}>
+        {lang.name}
+        </option>))}
+                        </select>}
+        <button onClick={handleGpt}
+        className="text-yellow-300 mr-1 bg-violet-900 px-3 py-2 rounded-md">
+          {gptstate ? "GPT Search":" Go To Home"}
+       </button>
+
         <img  className="w-9"
         src={sign_out_icon}
        alt="usericon" />

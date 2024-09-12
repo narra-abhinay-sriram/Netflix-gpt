@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux"
 import Header from "./Header"
 import Maincontainer from "./Maincontainer"
 import Secondarycontainer from "./Secondarycontainer"
@@ -7,8 +8,11 @@ import usePopularseries from "./usePopularseries"
 import useTopRated from "./useTopRated"
 import useTopseries from "./useTopseries"
 import useUpComing from "./useUpComing"
+import React from "react"
+import GptSearchbox from "./GptSearchbox"
 
 const Browse = () => {
+  
  
  useNowPlayingMovies()
  usePopular()
@@ -16,6 +20,7 @@ const Browse = () => {
  useUpComing()
  useTopseries()
  usePopularseries()
+ const gptstate=useSelector((store)=>store.gpt.gptstate)
  
   
   return (
@@ -23,8 +28,10 @@ const Browse = () => {
       <div>
        <Header/>
        </div>
+      {gptstate ? <React.Fragment>
       <Maincontainer/>
       <Secondarycontainer/>
+      </React.Fragment> : <GptSearchbox/>}
       </div>
   )
 }
