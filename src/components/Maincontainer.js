@@ -6,8 +6,9 @@ const Maincontainer = () => {
     const movies=useSelector((store)=>store.movies.nowplayingmovies)
     if(!movies) return
     const num=Math.floor((Math.random()*10))
+    const num2=Math.floor((Math.random()*10))
     
-    const mainmovie=movies[num]
+    const mainmovie=movies[num+num2]
    // console.log(mainmovie.id)
    // console.log(mainmovie)
   return (

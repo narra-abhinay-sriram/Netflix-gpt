@@ -67,11 +67,12 @@ if(error === "auth/email-already-in-use")
 }
 
   return (
+    <div className=" overflow-hidden">
  <div className="">
  <Header/>
- <div className="">
+ <div className="bg-black">
  <img 
- className="absolute bg-gradient-to-r from-black"
+ className="absolute bg-gradient-to-r from-black "
   src={login_bg} alt="bg-logo" />
  </div>
       <form onSubmit={(e)=>{e.preventDefault()}}
@@ -117,6 +118,7 @@ if(error === "auth/email-already-in-use")
         onClick={handleclick}>{isSignin?"New to Netflix? Sign Up Now":"Already a User? Sign In Now"}
         </p>
       </form>
+    </div>
     </div>
   )
 }
