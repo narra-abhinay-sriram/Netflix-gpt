@@ -11,7 +11,7 @@ export const Api_opt= {
 
   export const lang=[
     {identifier:"en",name:"English"},
-    {identifier:"hin",name:"Hindi"},
+    {identifier:"Hin",name:"Hindi"},
     {identifier:"Tel",name:"Telugu"},
 
   ]

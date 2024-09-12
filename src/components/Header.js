@@ -10,6 +10,7 @@ import {  signOut } from "firebase/auth";
 import { sign_out_icon } from "../utils/constants";
 import { changeGptstate } from "../utils/gptslice";
 import { lang } from "../utils/constants";
+import { changelang } from "../utils/langslice";
 const Header = () => {
   const gptstate=useSelector((store)=>store.gpt.gptstate)
 
@@ -42,6 +43,7 @@ const Header = () => {
  
  const handleclick=()=>{
   dispatch(removeuser())
+  dispatch(changeGptstate())
   
 signOut(auth).then(() => {
 // Sign-out successful.
@@ -54,17 +56,21 @@ signOut(auth).then(() => {
 const handleGpt=()=>{
   dispatch (changeGptstate())
 }
+const handleselect=(e)=>{
+
+  dispatch(changelang(e.target.value))
+}
 
   return (
 <div className="flex justify-between items-center w-screen py-1 bg-gradient-to-b from-black absolute z-10">
 <div className="px-1 ">
       <img className="w-40 " src={header_icon} alt="logo" />
-    </div>
+  </div>
     
-    {user&& 
-      <div className="flex items-center space-x-2 mr-4">
-       {!gptstate&& 
-<select className="px-4 py-2 rounded-md bg-gray-900 text-white">
+{user&& 
+  <div className="flex items-center space-x-2 mr-4">
+   {!gptstate&& 
+  <select className="px-4 py-2 rounded-md bg-gray-900 text-white " onChange={handleselect}>
       {lang.map
       ((lang)=>
         (<option 
@@ -72,11 +78,11 @@ const handleGpt=()=>{
       value={lang.identifier}>
         {lang.name}
         </option>))}
-                        </select>}
+ </select>}
         <button onClick={handleGpt}
         className="text-yellow-300 mr-1 bg-violet-900 px-3 py-2 rounded-md">
           {gptstate ? "GPT Search":" Go To Home"}
-       </button>
+         </button>
 
         <img  className="w-9"
         src={sign_out_icon}
