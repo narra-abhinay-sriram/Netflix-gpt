@@ -11,6 +11,7 @@ import { sign_out_icon } from "../utils/constants";
 import { changeGptstate, removegptmovies,changeonsignout } from "../utils/gptslice";
 import { lang } from "../utils/constants";
 import { changelang } from "../utils/langslice";
+import { removetrailer } from "../utils/movieslice";
 const Header = () => {
   const gptstate=useSelector((store)=>store.gpt.gptstate)
 
@@ -44,6 +45,7 @@ const Header = () => {
  const handleclick=()=>{
   dispatch(removeuser())
   dispatch(changeonsignout())
+  dispatch(removetrailer())
   
 signOut(auth).then(() => {
 // Sign-out successful.
