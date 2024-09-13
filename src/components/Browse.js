@@ -9,8 +9,7 @@ import useTopRated from "./useTopRated"
 import useTopseries from "./useTopseries"
 import useUpComing from "./useUpComing"
 import React from "react"
-import GptSearchbox from "./GptSearchbox"
-
+import Gptsearch from "./Gptsearch"
 const Browse = () => {
   
  
@@ -28,10 +27,10 @@ const Browse = () => {
       <div>
        <Header/>
        </div>
-      {gptstate ? <React.Fragment>
+      {gptstate ? <Gptsearch/> : <React.Fragment>
       <Maincontainer/>
       <Secondarycontainer/>
-      </React.Fragment> : <GptSearchbox/>}
+      </React.Fragment>}
       </div>
   )
 }

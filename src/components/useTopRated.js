@@ -1,11 +1,12 @@
 import { useEffect } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch,  } from "react-redux"
 import {  addtoprated } from "../utils/movieslice"
 import { Api_opt } from "../utils/constants"
 
 const useTopRated = () => {
     const dispatch=useDispatch()
     useEffect( ()=>{
+      // if(!toprated)
         fetchdata()
     },[])
 

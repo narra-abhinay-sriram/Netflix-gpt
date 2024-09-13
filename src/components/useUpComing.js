@@ -6,6 +6,7 @@ import { Api_opt } from "../utils/constants"
 const useUpComing = () => {
     const dispatch=useDispatch()
     useEffect( ()=>{
+        //if(!upcomingg)
         fetchdata()
     },[])
 

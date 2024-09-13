@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 const Videotitle = ({title,overview}) => {
-  const [overviews,setover]=useState(true)
+  const [overviews,setover]=useState(false)
   const handleclick=()=>{
     setover(!overviews)
   }

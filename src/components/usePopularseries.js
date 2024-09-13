@@ -1,11 +1,12 @@
 import { useEffect } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch,  } from "react-redux"
 import {   addpopularseries } from "../utils/movieslice"
 import { Api_opt } from "../utils/constants"
 
 const usePopularseries = () => {
     const dispatch=useDispatch()
     useEffect( ()=>{
+      //  if(!popseries)
         fetchdata()
     },[])
 

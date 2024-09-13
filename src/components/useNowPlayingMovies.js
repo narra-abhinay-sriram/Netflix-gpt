@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { Api_opt } from "../utils/constants"
-import { useDispatch } from "react-redux"
+import { useDispatch,  } from "react-redux"
 import { addnowplaying } from "../utils/movieslice"
 
 
@@ -8,6 +8,7 @@ const useNowPlayingMovies=()=>{
     const dispatch=useDispatch()
 
     useEffect( ()=>{
+       // if(!nowplaying)
         fetchdata()
     },[])
 

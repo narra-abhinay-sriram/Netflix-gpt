@@ -8,7 +8,7 @@ import { header_icon } from "../utils/constants";
 import { useSelector } from "react-redux"
 import {  signOut } from "firebase/auth";
 import { sign_out_icon } from "../utils/constants";
-import { changeGptstate } from "../utils/gptslice";
+import { changeGptstate, removegptmovies,changeonsignout } from "../utils/gptslice";
 import { lang } from "../utils/constants";
 import { changelang } from "../utils/langslice";
 const Header = () => {
@@ -43,7 +43,7 @@ const Header = () => {
  
  const handleclick=()=>{
   dispatch(removeuser())
-  dispatch(changeGptstate())
+  dispatch(changeonsignout())
   
 signOut(auth).then(() => {
 // Sign-out successful.
@@ -55,6 +55,7 @@ signOut(auth).then(() => {
 }
 const handleGpt=()=>{
   dispatch (changeGptstate())
+  dispatch(removegptmovies())
 }
 const handleselect=(e)=>{
 
@@ -69,7 +70,7 @@ const handleselect=(e)=>{
     
 {user&& 
   <div className="flex items-center space-x-2 mr-4">
-   {!gptstate&& 
+   {gptstate&& 
   <select className="px-4 py-2 rounded-md bg-gray-900 text-white " onChange={handleselect}>
       {lang.map
       ((lang)=>
@@ -81,7 +82,7 @@ const handleselect=(e)=>{
  </select>}
         <button onClick={handleGpt}
         className="text-yellow-300 mr-1 bg-violet-900 px-3 py-2 rounded-md">
-          {gptstate ? "GPT Search":" Go To Home"}
+          {gptstate ? "Go To Home":" GPT Search"}
          </button>
 
         <img  className="w-9"

@@ -1,11 +1,12 @@
 import { useEffect } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch,  } from "react-redux"
 import {   addtopseries } from "../utils/movieslice"
 import { Api_opt } from "../utils/constants"
 
 const useTopseries = () => {
     const dispatch=useDispatch()
     useEffect( ()=>{
+      //  if(!topseries)
         fetchdata()
     },[])
 

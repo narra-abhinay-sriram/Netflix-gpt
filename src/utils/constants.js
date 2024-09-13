@@ -15,3 +15,6 @@ export const Api_opt= {
     {identifier:"Tel",name:"Telugu"},
 
   ]
+
+ export const open_ai=process.env.REACT_APP_OPEN_AI
+ //console.log(open_ai)

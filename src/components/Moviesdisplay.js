@@ -1,5 +1,6 @@
 
 const Moviesdisplay = ({image_id}) => {
+  if(!image_id) return
   return (
     <div>
       <div className="w-[150px] mr-6   ">

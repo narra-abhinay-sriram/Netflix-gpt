@@ -1,12 +1,13 @@
 import { useEffect } from "react"
 import { Api_opt } from "../utils/constants"
-import { useDispatch } from "react-redux"
+import { useDispatch,  } from "react-redux"
 import { addtrailer } from "../utils/movieslice"
 
 const useTrailer = (id) => {
    
     const dispatch=useDispatch()
     useEffect(()=>{
+     // if(!trailers)
         fetchdata()
       },[])
       const fetchdata=async()=>{
